@@ -1,0 +1,46 @@
+package fxTreenilaskuri;
+
+import fi.jyu.mit.fxgui.Dialogs;
+import fi.jyu.mit.fxgui.ModalController;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
+public class TreenilaskuriGUIController {
+	
+    @FXML private TextField hakuehto;
+	
+	private String treeniryhmannimi = "FC PaPa";
+	  
+    @FXML private void handleTallenna() {
+        tallenna();
+    }
+    
+    private void tallenna() {
+        Dialogs.showMessageDialog("Tallennetetaan! Mutta ei toimi vielä");
+    }
+    
+    public boolean voikoSulkea() {
+        tallenna();
+        return true;
+    }
+    
+    public boolean avaa() {
+        String uusinimi = TreeniryhmanNimiController.kysyNimi(null, treeniryhmannimi);
+        if (uusinimi == null) return false;
+        lueTiedosto(uusinimi);
+        return true;
+    }
+    
+    protected void lueTiedosto(String nimi) {
+        treeniryhmannimi = nimi;
+        setTitle("Treeniryhmä - " + treeniryhmannimi);
+        String virhe = "Ei osata lukea vielä";
+            Dialogs.showMessageDialog(virhe);
+    }
+    
+    private void setTitle(String title) {
+        ModalController.getStage(hakuehto).setTitle(title);
+    }
+  
+   
+}

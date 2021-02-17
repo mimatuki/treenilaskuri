@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" fx:controller="fi.jyu.mit.fxgui.ModalController">
+<center>
+<VBox prefHeight="318.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+<children>
+<Label prefHeight="109.0" prefWidth="458.0" text="Treenilaskuri">
+<font>
+<Font size="39.0"/>
+</font>
+<padding>
+<Insets left="160.0"/>
+</padding>
+<VBox.margin>
+<Insets top="80.0"/>
+</VBox.margin>
+</Label>
+<Label prefHeight="78.0" prefWidth="387.0" text="Milla Tukiainen">
+<font>
+<Font size="18.0"/>
+</font>
+<VBox.margin>
+<Insets left="115.0"/>
+</VBox.margin>
+<padding>
+<Insets top="70.0"/>
+</padding>
+</Label>
+</children>
+<opaqueInsets>
+<Insets/>
+</opaqueInsets>
+<effect>
+<Lighting>
+<bumpInput>
+<Lighting bumpInput="$null">
+<light>
+<Light.Distant/>
+</light>
+</Lighting>
+</bumpInput>
+<light>
+<Light.Distant color="#e89494"/>
+</light>
+</Lighting>
+</effect>
+</VBox>
+</center>
+<effect>
+<Lighting>
+<bumpInput>
+<Lighting bumpInput="$null">
+<light>
+<Light.Distant/>
+</light>
+</Lighting>
+</bumpInput>
+<light>
+<Light.Distant color="#fdc0c0" elevation="82.01"/>
+</light>
+</Lighting>
+</effect>
+</BorderPane>
+

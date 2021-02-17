@@ -1,0 +1,39 @@
+package fxTreenilaskuri;
+
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.fxml.FXMLLoader;
+
+
+
+public class TreenilaskuriMain extends Application {
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+            final FXMLLoader ldr = new FXMLLoader(getClass().getResource("TreenilaskuriGUIView.fxml"));
+            final Pane root = (Pane)ldr.load();
+            final TreenilaskuriGUIController treenilaskuriCtrl = (TreenilaskuriGUIController)ldr.getController();
+            final Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("treenilaskuri.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Treenilaskuri");
+           
+            primaryStage.setOnCloseRequest((event) -> {
+                   if ( !treenilaskuriCtrl.voikoSulkea() ) event.consume();
+             });
+           
+            primaryStage.show();
+            if ( !treenilaskuriCtrl.avaa() ) Platform.exit();		
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

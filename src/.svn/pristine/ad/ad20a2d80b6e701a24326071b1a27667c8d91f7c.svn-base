@@ -1,0 +1,97 @@
+package fxTreenilaskuri;
+
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import fi.jyu.mit.fxgui.Dialogs;
+import fi.jyu.mit.fxgui.ModalController;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+
+public class TreenilaskuriGUIController {
+	
+    @FXML private TextField hakuehto;
+	
+	private String treeniryhmannimi = "FC PaPa";
+	  
+    @FXML private void handleTallenna() {
+        tallenna();
+    }
+    
+    @FXML private void handleAvaa() {
+    	avaa();
+    }
+    
+    @FXML private void handleLopeta() {
+    	tallenna();
+    	Platform.exit();
+    }
+    
+    @FXML private void handleUusiJasen() {
+        Dialogs.showMessageDialog("Vielä ei osata lisätä jäsentä");
+    }
+    
+    @FXML private void handleUusiLaji() {
+        Dialogs.showMessageDialog("Ei osata vielä lisätä treenilajia");
+    }    
+
+    @FXML private void handlePoistaLaji() {
+        Dialogs.showMessageDialog("Ei osata vielä poistaa treenilajia");
+    }
+   
+    @FXML private void handlePoistaJasen() {
+        Dialogs.showMessageDialog("Vielä ei osata poistaa jäsentä");
+    }
+    
+    private void tallenna() {
+        Dialogs.showMessageDialog("Tallennetetaan! Mutta ei toimi vielä");
+    }
+    
+    @FXML private void handleApua() {
+        avustus();
+    }
+    
+    @FXML private void handleTietoja() {
+         Dialogs.showMessageDialog("Ei osata vielä tietoja");
+    }   
+    
+    private void avustus() {
+        Desktop desktop = Desktop.getDesktop();
+        try {
+            URI uri = new URI("https://tim.jyu.fi/view/kurssit/tie/ohj2/2019k/ht/mimatuki");
+            desktop.browse(uri);
+        } catch (URISyntaxException e) {
+            return;
+        } catch (IOException e) {
+            return;
+        }
+    }
+    
+    public boolean voikoSulkea() {
+        tallenna();
+        return true;
+    }
+    
+    public boolean avaa() {
+        String uusinimi = TreeniryhmanNimiController.kysyNimi(null, treeniryhmannimi);
+        if (uusinimi == null) return false;
+        lueTiedosto(uusinimi);
+        return true;
+    }
+    
+    protected void lueTiedosto(String nimi) {
+        treeniryhmannimi = nimi;
+        setTitle("Treeniryhmä - " + treeniryhmannimi);
+        String virhe = "Ei osata lukea vielä";
+            Dialogs.showMessageDialog(virhe);
+    }
+    
+    private void setTitle(String title) {
+        ModalController.getStage(hakuehto).setTitle(title);
+    }
+  
+   
+}
